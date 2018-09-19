@@ -25,13 +25,16 @@ class SelectionCarousel extends Component{
 
   render(){
 
+    let { character, onSelect, onSkip } = this.props;
+
     return(
       <View style={styles.container}>
         <View style={styles.characterContainer}>
-          {/* 2. Add Character inside this View*/}
+          <Character characterThumbnail={ character.thumbnail} name={character.name} />
         </View>
         <View style={styles.buttonContainer}>
-          {/* 3. & 4. Add first and second Button components inside this View*/}
+          <Button style={styles.skipButton} onPress={() =>onSkip(character.id) }>Skip</Button>
+          <Button style={styles.selectButton} onPress={() => onSelect(character.id)}>Select</Button>
         </View>
       </View>
     )

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import Button from 'react-native-button';
 //Actions is provided by the router for dynamic routing
 import { Actions as RouteActions} from 'react-native-router-flux';

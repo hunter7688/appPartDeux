@@ -22,15 +22,30 @@ import { Actions as RouteActions } from 'react-native-router-flux';
 class WelcomeForm extends Component{
   constructor(props){
     super(props)
+
+    this.state ={
+      teamName: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   render(){
     return(
       <View style={styles.container}>
          <View style = {styles.textInputContainer} >
+          <TextInput
+            placeholder="team name"
+            style={styles.textInput}
+            onChange={(text) =>this.setState({teamName: text})}/>
+          <Button style={styles.button} onPress={this.handleSubmit}>Get Started</Button>
          </View>
       </View>
     )
+  }
+
+  handleSubmit(){
+      this.props.onSubmit(this.state.teamName)
   }
 }
 const styles = StyleSheet.create({
@@ -72,3 +87,9 @@ const styles = StyleSheet.create({
      letterSpacing: 3
    }
  })
+
+ WelcomeForm.PropTypes = {
+    onSubmit: PropTypes.func.isRequired
+ }
+
+ export default WelcomeForm
