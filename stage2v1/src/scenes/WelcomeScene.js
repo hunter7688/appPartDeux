@@ -14,6 +14,20 @@ import { Actions as RouteActions} from 'react-native-router-flux';
  * 5. Add RouteActions.tabbar to our button to route to our next scene
  */
 
+ class WelcomeScene extends Component {
+
+  render(){
+    return(
+      <View style={styles.container}>
+      <Text style={styles.text}>
+        Welcome Scene
+      </Text>
+      <Button style={styles.button} onPress={RouteActions.tabbar}>Get Started</Button>
+      </View>
+    )
+  }
+ }
+
 const styles = StyleSheet.create({
   container:{
     flex:1,
