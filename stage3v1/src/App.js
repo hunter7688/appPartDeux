@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Scene, Router, TabBar, Icon} from 'react-native-router-flux';
 import configureStore from './store/store'
 import { Provider } from 'react-redux'
-//1. const store = configureStore({});
+const store = configureStore({});
 
 /**
  * TODO Step 4:

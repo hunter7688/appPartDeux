@@ -19,10 +19,18 @@ export default function CharactersReducer(state = {items: {}, isLoading: false, 
     /*1. Add requested cases here
 
     */
+      case GET_CHARACTERS_REQUESTED:
+        return { ...state, isLoading: true}
 
     /* 2. Add character success case here
 
     */
+      case GET_CHARACTERS_SUCCESS:
+        return{
+          ...state,
+          isLoading: false,
+          items: convertMarvelResponse(action.payload.characters)
+        }
 
     case SKIP:
     case SELECT:
@@ -47,10 +55,11 @@ export default function CharactersReducer(state = {items: {}, isLoading: false, 
 function convertMarvelResponse(characters){
 
   let normalizedObj = {};
-
-  characters.results.forEach((character) => {
+console.log("jamie");
+console.log(characters);
+  characters.forEach((character) => {
     let formattedUri = character.thumbnail.path + '/portrait_fantastic' + '.' + character.thumbnail.extension
-    formattedUri = formattedUri.replace('http', 'https')
+    //formattedUri = formattedUri.replace('http', 'https')
     normalizedObj[character.id] = {id: character.id, thumbnail: formattedUri, name: character.name};
   });
 

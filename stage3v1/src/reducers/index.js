@@ -9,3 +9,7 @@ import CharactersReducer from './CharactersReducer';
  * 2. Pass TeamReducer to combineReducers config on the team property
  * 3. Pass CharactersReducer to combineReducers config on the characters property
  */
+export default combineReducers({
+    team: TeamReducer,
+    characters: CharactersReducer
+})

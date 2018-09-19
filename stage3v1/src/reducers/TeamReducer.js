@@ -10,7 +10,7 @@ export default function TeamReducer(state = {teamName: '', characters: {}}, acti
       return {teamName: action.payload.teamName};
     case SELECT:
       let character = action.payload.character;
-      reurn {...state, characters: {...state.characters, [character.id] : character } }
+      return {...state, characters: {...state.characters, [character.id] : character } }
     default:
       return state;
   }
