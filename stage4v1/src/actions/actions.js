@@ -59,34 +59,16 @@ export function skip(character) {
  */
  export function getCharacters() {
    return (dispatch) => {
-
-     let marvelResponse = {
-         data: {
-           results: [
-             {
-               id: 1,
-               name: 'Hulk',
-               thumbnail: {path: 'https://media.giphy.com/media/XSc4Kkc5u2WZy/giphy.gif?response_id=5924e51c9c00278bccae6381'}
-             },
-             {
-               id: 2,
-               name: 'Spiderman',
-               thumbnail: {path: 'https://media.giphy.com/media/wxM2SPuC0xONy/giphy.gif?response_id=5924e4fbdce001eee5377580'}
-             },
-             {
-               id: 3,
-               name: 'Wolverine',
-               thumbnail: {path: 'https://media.giphy.com/media/12m3hgKuSuhClW/giphy.gif?response_id=5924e4caa6a5ded54cf455f4'}
-             }
-           ]
-        }
-     };
-
-    dispatch(getCharactersRequested());
-    dispatch(getCharactersSuccess(marvelResponse.data.results));
-
+    marvelApi.getMarvelCharacters().then((results)=> {
+      dispatch(getCharactersSuccess(results.data))
+   }).catch((error) => {
+      dispatch(getCharactersFailure(error))
+   })
+     
    };
- };
+   
+  };
+ 
 
  export function getCharactersRequested() {
    return {
